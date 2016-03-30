@@ -7,6 +7,7 @@
 % Use importdata() ?
 
 clear
+close all
 
 % CONSTANTS
 dx = 0.1; % dx

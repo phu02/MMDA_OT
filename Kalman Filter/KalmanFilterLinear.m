@@ -1,5 +1,5 @@
 classdef KalmanFilterLinear < handle
-    %KalmanFilterLinear
+    % KalmanFilterLinear
     %   Implements a linear Kalman filter
     %   adapted from Python code written by Greg Czerniak
     %   by Stephen Dennison, 2/7/16

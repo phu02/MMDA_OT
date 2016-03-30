@@ -1,12 +1,12 @@
 classdef Cannon < handle
-    %UNTITLED2 Summary of this class goes here
+    % Summary of this class goes here
     %   Detailed explanation goes here
     
     properties
-        angle = 45;
+        angle = 40;
         muzzle_vel = 100;
         gravity = [0,-9.81];
-        velocity;% = [muzzle_vel*cos(angle*pi/180),muzzle_vel*sin(angle*pi/180)];
+        velocity; % = [muzzle_vel*cos(angle*pi/180),muzzle_vel*sin(angle*pi/180)];
         loc = [0,0];
         acceleration = [0,0];
         timeSlice;
