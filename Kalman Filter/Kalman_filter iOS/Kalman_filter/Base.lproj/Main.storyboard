@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -16,11 +17,69 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press the button" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2s4-KE-Qqg">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="20" y="37" width="269" height="93"/>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dnZ-H3-07f">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Button" image="1-AddButtonFinal"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="100" y="369" width="181" height="126"/>
+                                </variation>
+                                <connections>
+                                    <action selector="Trigger_draw:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5H2-Tk-nJU"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dnZ-H3-07f" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="U5h-Xp-pbS"/>
+                            <constraint firstItem="dnZ-H3-07f" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="byS-mk-FpD"/>
+                            <constraint firstItem="dnZ-H3-07f" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ihu-LJ-MHk"/>
+                            <constraint firstItem="dnZ-H3-07f" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="80" id="uCG-kA-1fe"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="2s4-KE-Qqg"/>
+                                <exclude reference="dnZ-H3-07f"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="U5h-Xp-pbS"/>
+                                <exclude reference="byS-mk-FpD"/>
+                                <exclude reference="ihu-LJ-MHk"/>
+                                <exclude reference="uCG-kA-1fe"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="2s4-KE-Qqg"/>
+                                <include reference="dnZ-H3-07f"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="U5h-Xp-pbS"/>
+                                <include reference="byS-mk-FpD"/>
+                                <include reference="ihu-LJ-MHk"/>
+                                <include reference="uCG-kA-1fe"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="Press_button" destination="2s4-KE-Qqg" id="S9i-El-WdT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="304.5" y="363"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="1-AddButtonFinal" width="127" height="126"/>
+    </resources>
 </document>
