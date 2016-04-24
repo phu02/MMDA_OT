@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -14,7 +13,7 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleAspectFit" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -31,42 +30,57 @@
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Button" image="1-AddButtonFinal"/>
                                 <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="100" y="369" width="181" height="126"/>
+                                    <rect key="frame" x="138" y="195" width="136" height="126"/>
                                 </variation>
                                 <connections>
-                                    <action selector="Trigger_draw:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5H2-Tk-nJU"/>
+                                    <action selector="Trigger_draw:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tFj-uU-ffv"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKL-5w-ldc">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="150" y="394" width="46" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="TestButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gl1-RC-VGC"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="dnZ-H3-07f" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="U5h-Xp-pbS"/>
-                            <constraint firstItem="dnZ-H3-07f" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="byS-mk-FpD"/>
-                            <constraint firstItem="dnZ-H3-07f" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ihu-LJ-MHk"/>
-                            <constraint firstItem="dnZ-H3-07f" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="80" id="uCG-kA-1fe"/>
+                            <constraint firstItem="dnZ-H3-07f" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3tL-5O-WEb"/>
+                            <constraint firstItem="OKL-5w-ldc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lFf-wr-NCg"/>
+                            <constraint firstItem="dnZ-H3-07f" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="lca-fD-fpL"/>
+                            <constraint firstItem="OKL-5w-ldc" firstAttribute="top" secondItem="dnZ-H3-07f" secondAttribute="bottom" constant="73" id="sdB-9C-Md9"/>
+                            <constraint firstItem="dnZ-H3-07f" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="175" id="twd-a7-brD"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="2s4-KE-Qqg"/>
                                 <exclude reference="dnZ-H3-07f"/>
+                                <exclude reference="OKL-5w-ldc"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="U5h-Xp-pbS"/>
-                                <exclude reference="byS-mk-FpD"/>
-                                <exclude reference="ihu-LJ-MHk"/>
-                                <exclude reference="uCG-kA-1fe"/>
+                                <exclude reference="3tL-5O-WEb"/>
+                                <exclude reference="lca-fD-fpL"/>
+                                <exclude reference="twd-a7-brD"/>
+                                <exclude reference="lFf-wr-NCg"/>
+                                <exclude reference="sdB-9C-Md9"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="2s4-KE-Qqg"/>
                                 <include reference="dnZ-H3-07f"/>
+                                <include reference="OKL-5w-ldc"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="U5h-Xp-pbS"/>
-                                <include reference="byS-mk-FpD"/>
-                                <include reference="ihu-LJ-MHk"/>
-                                <include reference="uCG-kA-1fe"/>
+                                <include reference="3tL-5O-WEb"/>
+                                <include reference="lca-fD-fpL"/>
+                                <include reference="twd-a7-brD"/>
+                                <include reference="lFf-wr-NCg"/>
+                                <include reference="sdB-9C-Md9"/>
                             </mask>
                         </variation>
                     </view>
