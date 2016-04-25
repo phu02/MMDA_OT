@@ -59,14 +59,14 @@ class ABMatrix
         return (P, 1)
     }
     
-    func Multiply(let N: ABMatrix) -> ([Double], Int) {
+    func Multiply(let N: ABMatrix) -> (ABMatrix) {
         // self.row x self.col  * N.row x N.col = self.row x N.col
+        var P = self.MakeZero(row, col: N.col)
+        var output = ABMatrix(matrix: P, row: self.row, col: N.col)
         
         if(self.col != row) {
-            return ([], 0)
+            return (output)
         }
-        
-        var P = self.MakeZero(row, col: N.col)
         
         for i in 0..<self.row {
             for j in 0..<N.col {
@@ -75,11 +75,11 @@ class ABMatrix
                 }
             }
         }
-        
-        return (P, 1)
+        output = ABMatrix(matrix: P, row: self.row, col: N.col)
+        return (output)
     }
     
-    func Add(let N: ABMatrix) -> ([Double]) {
+    func Add(let N: ABMatrix) -> (ABMatrix) {
         if (self.row == N.row) {
             if(self.col == N.col) {
                 for r in 0..<row {
@@ -90,12 +90,12 @@ class ABMatrix
                 }
             }
         }
-        
-        return N.M
+        let output = ABMatrix(matrix: self.M, row: N.row, col: N.col)
+        return output
     }
     
     
-    func Subtract(let N: ABMatrix) -> ([Double]) {
+    func Subtract(let N: ABMatrix) -> (ABMatrix) {
         if (self.row == N.row) {
             if(self.col == N.col) {
                 for r in 0..<row {
@@ -106,11 +106,11 @@ class ABMatrix
                 }
             }
         }
-        
-        return N.M
+        let output = ABMatrix(matrix: self.M, row: N.row, col: N.col)
+        return output
     }
     
-    func Transpose() ->([Double]){
+    func Transpose() ->(ABMatrix){
         var T = self.M
         for r in 0..<row {
             for c in 0..<col {
@@ -121,7 +121,12 @@ class ABMatrix
                 T[indexT] = self.M[indexM]
             }
         }
-        return T
+//        self.M = T
+//        let buffer = self.row
+//        self.row = self.col
+//        self.col = buffer
+        let output = ABMatrix(matrix: T, row: self.col, col: self.row)
+        return output
     }
     
     func Scale(let s: Double) -> () {
@@ -130,7 +135,7 @@ class ABMatrix
         }
     }
     
-    func Inverse() -> ([Double], Int) {
+    func Inverse() -> (ABMatrix) {
         // if returned Int is 0, matrix M is singular - no inverse
         // Gauss Jordan Method: Strang page 71 to 75
         let square = self.row  // number rows = cols
@@ -157,7 +162,8 @@ class ABMatrix
             // is this a singular matrix
             if (N.M[currentPivotRow*square+indexPivot] == 0.0) {
                 //print("Inversion failed")
-                return (N.M, 0) // 0 returned in .1 position of tuple if singular
+                N.MakeZero()
+                return N // N = 0 returned in .1 position of tuple if singular
             }
             // do the pivot - swap row, as required
             //print("^^^^^^cpr: \(currentPivotRow) &  iP: \(indexPivot)")
@@ -208,30 +214,10 @@ class ABMatrix
             }
         }
         //print("Inversion successful")
-        return (N.M, 1) // 1 returned with inverse in .1 posiiton of tuple
+        
+        return N
+//        return (N.M, 1) // 1 returned with inverse in .1 posiiton of tuple
     }
-    
-    //currently CopyRow function can only support copying matrix with n rows, 3 cols
-//    func CopyRow(let rowNum: Int)->([Double]) {
-//        var input_X = ABMatrix(matrix: [0, 0, 0], row: 1, col: self.col)
-//        
-//        if rowNum <= self.row {
-//            let index = ((rowNum-1) * (col))
-//            //                print(M[index], terminator: " ")
-//            input_X = ABMatrix(matrix:[self.M[index], self.M[index+1], self.M[index+2]], row: 1, col: self.col)
-//        }
-//        return input_X.M
-//    }
-    
-//    //currently CopyCol function can only support copying matrix with 3 rows, n cols
-//    func CopyCol(let colNum: Int)->(
-//    
-//        var output = ABMatrix(matrix: self.Transpose(), row:self.col, col:self.row)
-//        output = ABMatrix(matrix: self.Transpose().CopyRow(colNum),row:3, col:1)
-//            
-//        return output.Transpose()
-//    }
-//    
     
     func PrintMatrix(let M: [Double], let row: Int, let col: Int, let label: String) -> () {
         print(label)
@@ -261,7 +247,28 @@ class ABMatrix
     }
     
     func Copy(let M: [Double]) -> ([Double]) {return M}
+
     
+    //currently CopyRow function can only support copying matrix with n rows, 3 cols
+//    func CopyRow(let rowNum: Int)->(ABMatrix) {
+//        var input_X = ABMatrix(matrix: [0, 0, 0], row: 1, col: self.col)
+//    
+//        if rowNum <= self.row {
+//            let index = ((rowNum-1) * (col))
+////                print(M[index], terminator: " ")
+//            input_X = ABMatrix(matrix:[self.M[index], self.M[index+1], self.M[index+2]], row: 1, col: self.col)
+//        }
+//        return input_X
+//    }
+    
+//    //currently CopyCol function can only support copying matrix with 3 rows, n cols
+//    func CopyCol(let colNum: Int)->(ABMatrix) {
+//
+//        let output = self.Transpose().CopyRow(colNum).Transpose()
+//       return output
+//    }
+    
+
     func Identity() -> (Int) {
         var Z = Array(count: (row*col), repeatedValue: 0.0)
         if(row == col) {

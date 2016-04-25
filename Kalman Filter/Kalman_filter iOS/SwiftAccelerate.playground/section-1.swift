@@ -13,6 +13,7 @@ var vsresult = [Double](count : v.count, repeatedValue : 0.0)
 vDSP_vsaddD(v, 1, &s, &vsresult, 1, vDSP_Length(v.count))
 vsresult
 
+//multiply vector with scalar
 vDSP_vsmulD(v, 1, &s, &vsresult, 1, vDSP_Length(v.count))
 vsresult
 
@@ -29,6 +30,7 @@ var vvresult = [Double](count : 2, repeatedValue : 0.0)
 vDSP_vaddD(v1, 1, v2, 1, &vvresult, 1, vDSP_Length(v1.count))
 vvresult
 
+// equals to matlab code .*
 vDSP_vmulD(v1, 1, v2, 1, &vvresult, 1, vDSP_Length(v1.count))
 vvresult
 
@@ -51,9 +53,9 @@ dpresult
 */
 var m1 = [ 3.0, 2.0, 4.0, 5.0, 6.0, 7.0 ]
 var m2 = [ 10.0, 20.0, 30.0, 30.0, 40.0, 50.0]
-var mresult = [Double](count : 9, repeatedValue : 0.0)
+var mresult = [Double](count : 4, repeatedValue : 0.0)
 
-vDSP_mmulD(m1, 1, m2, 1, &mresult, 1, 3, 3, 2)
+vDSP_mmulD(m2, 1, m1, 1, &mresult, 1, 2, 2, 3)
 mresult
 
 

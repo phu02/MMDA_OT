@@ -9,9 +9,7 @@
 import UIKit
 //import ABMatrix.swift
 import CoreGraphics
-//UIBezierPath *myPath=[[UIBezierPath, alloc],init];
-//myPath.lineWidth=10;
-//brushPattern=[UIColor redColor]; //This is the color of my stroke
+//import Accelerate
 
 
 
@@ -255,68 +253,83 @@ class ViewController: UIViewController {
     var xn = ABMatrix(matrix:[0,0,0], row:3, col:1)
 //    var xn_prev = ABMatrix(matrix:[0,0,0], row:3, col:1)
     var x_pred = ABMatrix(matrix:[0,0,0], row:3, col:1)
-    var Zn = ABMatrix(matrix:[0,0,0], row:3, col:1)
+//    var Zn = ABMatrix(matrix:[0,0,0], row:3, col:1)
+    var Zn = [0.0, 0.0, 0.0]
     var y_tilda = ABMatrix(matrix:[0,0,0], row:3, col:1)
     var identityMatrix3 = ABMatrix(matrix:[1,0,0,0,1,0,0,0,1], row:3, col:3)
 //    var flag = 0
-    
-    
+//    var index: Double
+    var accel = 0.0
+    var obj: KalmanFilter!
     @IBAction func TestButton(sender: UIButton) {
-//        xn = ABMatrix(matrix:[0,0,0], row:3, col:1)
-        matrix_A = ABMatrix(matrix:[1,dt,0.5*dt*dt,0,1,dt, 0,0,1], row:3, col:3)
-//        x_pred = ABMatrix(matrix:[1,1,1], row:3, col:1)
-//        xn = matrix_A.Multiply(x_pred)
+        if (counter == 0) {
+            obj = KalmanFilter(StateMatrix: [1,dt,0.5*dt*dt,0,1,dt, 0,0,1])
+            let dataTrans = dataMatrix.Transpose()
+            newMatrix = ABMatrix(matrix:dataTrans, row:3, col:dataMatrix.row)
+            matrix_A = ABMatrix(matrix:[1,dt,0.5*dt*dt,0,1,dt, 0,0,1], row:3, col:1)
+        }
+        counter = counter + 1
+        accel = dataMatrix.M[(counter-1) * dataMatrix.col + x_axis]
+        Zn = [0, 0, accel]
+        obj.update(Zn)
+        print("\n counter is ", counter)
         
-        matrix_Q = ABMatrix(matrix:[1,1,0,1,1,0,1,1,0], row:3, col:3)
+        print("\n check Zn is", Zn)
+        print("\n X_pred is ",obj.predictedStateEstimate)
+        print("\n P_pred is", obj.predictedProbEstimate)
+        print("\n A is ",obj.A)
+        print("\n y_tilda is ",obj.y_tilda)
+        print("\n S is ",obj.S)
+        print("\n kalmanGain is ",obj.kalmanGain)
         
-
-        print("\n printing transposed A + Q")
-        matrix_A.Transpose().Subtract(matrix_Q).Print()
+        print("\n xn is ",obj.currentStateEstimate)
+        print("\n Pn is ",obj.currentProbEstimate)
+//        print("\n xn is ",NSString(format:"[%2.2f]",obj.currentStateEstimate))
+//        print("\n Pn is ",NSString(format:"[%2.2f]",obj.currentProbEstimate))
         
-
     }
     @IBAction func Trigger_draw(sender: UIButton) {
-
-        if (counter == 0) {
-            newMatrix = dataMatrix.Transpose()
-            matrix_A = ABMatrix(matrix:[1,dt,0.5*dt*dt,0,1,dt, 0,0,1], row:3, col:3)
-//            counter = counter+1
-        }
-
-        counter = counter+1
-        print("\n counter is ",counter)
-        
-        //measuring the x_axis acceleration
-        Zn.M[0] = 0
-        Zn.M[1] = 0
-        Zn.M[2] = newMatrix.CopyCol(counter).M[0]    //measurement vector
-        print("\n Zn is")
-        Zn.Print()
-        
-        //REMEMBER TO EXTRACT THE AXIS FROM ZN TO APPLY INTO THE EQUATION, ONLY Y-AXIS IS NEEDED HERE.
-
-        x_pred = matrix_A.Multiply(xn)
-        print("\n x_pred is")
-        x_pred.Print()
-        P_pred = matrix_A.Multiply(Pn).Multiply(matrix_A.Transpose()).Add(matrix_Q)
-        print("\n P_pred is")
-        P_pred.Print()
-        y_tilda = Zn.Subtract( matrix_H.Multiply(x_pred))
-        print("\n y_tilda is")
-        y_tilda.Print()
-        matrix_S = matrix_H.Multiply(P_pred).Multiply(matrix_H.Transpose()).Add(matrix_R)
-        print("\n matrix_S is")
-        matrix_S.Print()
-        kalmanGain = P_pred.Multiply(matrix_H.Transpose()).Multiply(matrix_S.Inverse())
-        print("\n kalmanGain is")
-        kalmanGain.Print()
-        xn = x_pred.Add(kalmanGain.Multiply(y_tilda))
-        print("\n xn is")
-        xn.Print()
-        Pn = (identityMatrix3.Subtract(kalmanGain.Multiply(matrix_H))).Multiply(P_pred)
-        print("\n Pn is")
-        Pn.Print()
-        
+//
+//        if (counter == 0) {
+//            newMatrix = dataMatrix.Transpose()
+//            matrix_A = ABMatrix(matrix:[1,dt,0.5*dt*dt,0,1,dt, 0,0,1], row:3, col:3)
+////            counter = counter+1
+//        }
+//
+//        counter = counter+1
+//        print("\n counter is ",counter)
+//        
+//        //measuring the x_axis acceleration
+//        Zn.M[0] = 0
+//        Zn.M[1] = 0
+//        Zn.M[2] = newMatrix.CopyCol(counter).M[0]    //measurement vector
+//        print("\n Zn is")
+//        Zn.Print()
+//        
+//        //REMEMBER TO EXTRACT THE AXIS FROM ZN TO APPLY INTO THE EQUATION, ONLY Y-AXIS IS NEEDED HERE.
+//
+//        x_pred = matrix_A.Multiply(xn)
+//        print("\n x_pred is")
+//        x_pred.Print()
+//        P_pred = matrix_A.Multiply(Pn).Multiply(matrix_A.Transpose()).Add(matrix_Q)
+//        print("\n P_pred is")
+//        P_pred.Print()
+//        y_tilda = Zn.Subtract( matrix_H.Multiply(x_pred))
+//        print("\n y_tilda is")
+//        y_tilda.Print()
+//        matrix_S = matrix_H.Multiply(P_pred).Multiply(matrix_H.Transpose()).Add(matrix_R)
+//        print("\n matrix_S is")
+//        matrix_S.Print()
+//        kalmanGain = P_pred.Multiply(matrix_H.Transpose()).Multiply(matrix_S.Inverse())
+//        print("\n kalmanGain is")
+//        kalmanGain.Print()
+//        xn = x_pred.Add(kalmanGain.Multiply(y_tilda))
+//        print("\n xn is")
+//        xn.Print()
+//        Pn = (identityMatrix3.Subtract(kalmanGain.Multiply(matrix_H))).Multiply(P_pred)
+//        print("\n Pn is")
+//        Pn.Print()
+//        
         Press_button.text = "Start Drawing the projectile graph for kalman filter simulation"
         
         

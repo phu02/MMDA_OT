@@ -14,6 +14,7 @@
 		7B10FA901CBB3D5A00E41659 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B10FA8E1CBB3D5A00E41659 /* LaunchScreen.storyboard */; };
 		7B10FA9B1CBB3D5A00E41659 /* Kalman_filterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B10FA9A1CBB3D5A00E41659 /* Kalman_filterTests.swift */; };
 		7B10FAA61CBB3D5A00E41659 /* Kalman_filterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B10FAA51CBB3D5A00E41659 /* Kalman_filterUITests.swift */; };
+		7B37FFDA1CCD89B90052E74C /* KalmanFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B37FFD91CCD89B90052E74C /* KalmanFilter.swift */; };
 		7B46C2141CBBEF65006ED6A8 /* ABMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B46C2131CBBEF65006ED6A8 /* ABMatrix.swift */; };
 		7B46C2151CBBEF65006ED6A8 /* ABMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B46C2131CBBEF65006ED6A8 /* ABMatrix.swift */; };
 		7B46C2161CBBEF65006ED6A8 /* ABMatrix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B46C2131CBBEF65006ED6A8 /* ABMatrix.swift */; };
@@ -50,6 +51,7 @@
 		7B10FAA11CBB3D5A00E41659 /* Kalman_filterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Kalman_filterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B10FAA51CBB3D5A00E41659 /* Kalman_filterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kalman_filterUITests.swift; sourceTree = "<group>"; };
 		7B10FAA71CBB3D5A00E41659 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7B37FFD91CCD89B90052E74C /* KalmanFilter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KalmanFilter.swift; sourceTree = "<group>"; };
 		7B46C2131CBBEF65006ED6A8 /* ABMatrix.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ABMatrix.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +106,7 @@
 				7B10FA851CBB3D5900E41659 /* AppDelegate.swift */,
 				7B46C2131CBBEF65006ED6A8 /* ABMatrix.swift */,
 				7B10FA871CBB3D5900E41659 /* ViewController.swift */,
+				7B37FFD91CCD89B90052E74C /* KalmanFilter.swift */,
 				7B10FA891CBB3D5900E41659 /* Main.storyboard */,
 				7B10FA8C1CBB3D5A00E41659 /* Assets.xcassets */,
 				7B10FA8E1CBB3D5A00E41659 /* LaunchScreen.storyboard */,
@@ -264,6 +267,7 @@
 				7B10FA881CBB3D5900E41659 /* ViewController.swift in Sources */,
 				7B46C2141CBBEF65006ED6A8 /* ABMatrix.swift in Sources */,
 				7B10FA861CBB3D5900E41659 /* AppDelegate.swift in Sources */,
+				7B37FFDA1CCD89B90052E74C /* KalmanFilter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
