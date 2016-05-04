@@ -212,16 +212,20 @@ class ABMatrix
     }
     
     //currently CopyRow function can only support copying matrix with n rows, 3 cols
-//    func CopyRow(let rowNum: Int)->([Double]) {
-//        var input_X = ABMatrix(matrix: [0, 0, 0], row: 1, col: self.col)
-//        
-//        if rowNum <= self.row {
-//            let index = ((rowNum-1) * (col))
-//            //                print(M[index], terminator: " ")
-//            input_X = ABMatrix(matrix:[self.M[index], self.M[index+1], self.M[index+2]], row: 1, col: self.col)
-//        }
-//        return input_X.M
-//    }
+    func CopyRow(let rowNum: Int) -> ([Double]) {
+        let rowMatrix = [Double](count: self.M.count/self.row, repeatedValue:0.0)
+        let input_X = ABMatrix(matrix: rowMatrix, row: 1, col: self.col)
+        
+        if rowNum <= self.row {
+            for index in 0..<(self.col) {
+                input_X.M[index] = self.M[(rowNum-1)*col+index]
+            }
+        }else{
+            print("Row number is too big")
+            return input_X.M
+        }
+        return input_X.M
+    }
     
 //    //currently CopyCol function can only support copying matrix with 3 rows, n cols
 //    func CopyCol(let colNum: Int)->(

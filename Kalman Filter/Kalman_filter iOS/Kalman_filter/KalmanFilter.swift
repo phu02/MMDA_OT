@@ -42,7 +42,7 @@ class KalmanFilter {
         // Current Estimate starting points
         currentStateEstimate = [0, 0, 0] // initial guess  x_pred
         currentProbEstimate = [Double](count: nXn, repeatedValue: 0.0)
-        P = 1
+        P = 0.1
         vDSP_vsmulD(I, 1, &P, &currentProbEstimate, 1, vDSP_Length(I.count)) // currentProbEstimate = I * 0.1
     }
     

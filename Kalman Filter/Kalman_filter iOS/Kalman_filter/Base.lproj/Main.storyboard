@@ -20,7 +20,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press the button" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2s4-KE-Qqg">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="20" y="37" width="269" height="93"/>
@@ -29,9 +29,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dnZ-H3-07f">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Button" image="1-AddButtonFinal"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="138" y="195" width="136" height="126"/>
-                                </variation>
                                 <connections>
                                     <action selector="Trigger_draw:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tFj-uU-ffv"/>
                                 </connections>
@@ -39,9 +36,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKL-5w-ldc">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="150" y="394" width="46" height="30"/>
-                                </variation>
                                 <connections>
                                     <action selector="TestButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gl1-RC-VGC"/>
                                 </connections>
@@ -62,11 +56,11 @@
                                 <exclude reference="OKL-5w-ldc"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="lFf-wr-NCg"/>
+                                <exclude reference="sdB-9C-Md9"/>
                                 <exclude reference="3tL-5O-WEb"/>
                                 <exclude reference="lca-fD-fpL"/>
                                 <exclude reference="twd-a7-brD"/>
-                                <exclude reference="lFf-wr-NCg"/>
-                                <exclude reference="sdB-9C-Md9"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -76,11 +70,11 @@
                                 <include reference="OKL-5w-ldc"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="lFf-wr-NCg"/>
+                                <include reference="sdB-9C-Md9"/>
                                 <include reference="3tL-5O-WEb"/>
                                 <include reference="lca-fD-fpL"/>
                                 <include reference="twd-a7-brD"/>
-                                <include reference="lFf-wr-NCg"/>
-                                <include reference="sdB-9C-Md9"/>
                             </mask>
                         </variation>
                     </view>
