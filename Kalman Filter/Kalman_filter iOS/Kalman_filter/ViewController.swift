@@ -1352,6 +1352,8 @@ class ViewController: UIViewController {
     let sineArraySize = 1024
     let fft_weights: FFTSetupD = vDSP_create_fftsetupD(vDSP_Length(log2(Float(1024))), FFTRadix(kFFTRadix2))
     
+    
+    //Function to demo Accel data
     @IBAction func TestButton(sender: UIButton) {
         if (counter == 0) {
             obj = KalmanFilter(StateMatrix: [1,0,0,0,1,0, 0,0,1])
@@ -1431,6 +1433,8 @@ class ViewController: UIViewController {
     var gyroM: [Double]!
     var gyroMatrixT = ABMatrix(matrix:[0.0, 0.0,0.0],row:3, col:1)
     
+    
+    //function to demo Gyro data
     @IBAction func Trigger_draw(sender: UIButton) {
         if(detectCount == 0.0){
             
