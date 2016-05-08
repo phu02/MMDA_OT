@@ -1,0 +1,15 @@
+
+
+1. the data coming from Yun to server should be 2 channels of data, each with three columns. 1 channel for accel x,y,z info; the other channel for gyro roll pitch yaw information.
+
+2. Data from server to iPhone should still be of the same form:
+	n rows x 3 columns 	for both accel and gyro data
+
+3. detection algorithms are in viewController.swift
+	for toothbrushing, it's function TestButton
+	for hairbrushing, it's function Trigger_draw.
+
+4. you can call the function by running the simulation, and click the button trigger.
+
+5. You also need to include my modified ABMatrix.swift and KalmanFilter.swift in your code. BTW, kalman filter is actually not working. We've worked around it.
+ 
