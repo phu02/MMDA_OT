@@ -32,7 +32,8 @@ void loop() {
 
   //Serial.println("test");
 
-  String dataString;
+  String accelString;
+  String gyroString;
   float accel[3];
   //float gyros[3];
   //int *gyro1, *gyro2, *gyro3;
@@ -41,32 +42,29 @@ void loop() {
   my3IMU.acc.get_Gxyz(accel);
   my3IMU.getAngles(gyros);
   accel[2] = accel[2]*1.1;
-  dataString += String(accel[0]);
-  dataString += ", ";
-  dataString += String(accel[1]);
-  dataString += ", ";
-  dataString += String(accel[2]);
-  dataString += ", ";  
-  //dataString += String(gyros[0]);
-  dataString += String(gyros[0]);
-  dataString += ", ";
-  //dataString += String(gyros[1]);
-  dataString += String(gyros[1]);
-  dataString += ", ";
-  //dataString += String(gyros[2]);
-  dataString += String(gyros[2]);
-  dataString += ", "; 
+  accelString += String(accel[0]);
+  accelString += ", ";
+  accelString += String(accel[1]);
+  accelString += ", ";
+  accelString += String(accel[2]);
+  accelString += ", ";  
 
-//  File dataFile = FileSystem.open("/mnt/sda1/arduino/accel3.txt", FILE_WRITE);
-  File dataFile = FileSystem.open("accel3.txt", FILE_WRITE);
+  gyroString += String(gyros[0]);
+  gyroString += ", ";
+  gyroString += String(gyros[1]);
+  gyroString += ", ";
+  gyroString += String(gyros[2]);
+  gyroString += ", "; 
 
-  //if (dataFile) {
-    dataFile.println(dataString);
-    //dataFile.close();
-    Serial.println(dataString);
-  //}
-  //else {
-    //Serial.println("error opening datalog.txt");
-  //} 
+
+  File accelFile = FileSystem.open("/mnt/sd/accel.txt", FILE_WRITE);
+  File gyroFile = FileSystem.open("/mnt/sd/gyro.txt", FILE_WRITE);
+
+
+  accelFile.println(accelString);
+  gyroFile.println(gyroString);
+
+  Serial.println(accelFile);
+  Serial.println(gyroFile);
   delay(10);
 }
